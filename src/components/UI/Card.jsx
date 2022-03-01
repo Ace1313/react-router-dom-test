@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Card = (props) => {
    return (
       <Wrapper>
-         <div className={classes.card}>{props.children}</div>;
+         <div className="card">{props.children}</div>;
       </Wrapper>
    );
 };

@@ -1,11 +1,12 @@
-import React from 'react';
+import QuoteList from '../components/quotes/QuoteList';
+
+const DUMMY_DATA = [
+   { id: 'q1', autohor: 'Alex', text: 'Learning react is fun!!!' },
+   { id: 'q2', autohor: 'Bubble', text: 'Swimming is cool' },
+];
 
 function AllQuotes() {
-   return (
-      <div>
-         <h1>All Quotes</h1>
-      </div>
-   );
+   return <QuoteList quotes={DUMMY_DATA} />;
 }
 
 export default AllQuotes;

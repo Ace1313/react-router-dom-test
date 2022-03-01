@@ -5,7 +5,7 @@ const QuoteList = (props) => {
    return (
       <Wrapper>
          <div>
-            <ul className={classes.list}>
+            <ul className="list">
                {props.quotes.map((quote) => (
                   <QuoteItem
                      key={quote.id}

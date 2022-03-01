@@ -1,11 +1,10 @@
-import React from 'react';
+import QuoteForm from '../components/quotes/QuoteForm';
 
 function NewQuote() {
-   return (
-      <div>
-         <h1>New Quote</h1>
-      </div>
-   );
+   function addQuoteHandler() {
+      console.log('Hejsan');
+   }
+   return <QuoteForm onAddQuote={addQuoteHandler} />;
 }
 
 export default NewQuote;
