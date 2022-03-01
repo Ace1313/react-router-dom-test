@@ -1,12 +1,36 @@
 import QuoteItem from './QuoteItem';
 import styled from 'styled-components';
+import { useHistory, useLocation } from 'react-router-dom';
+
+const sortQuotes = (quotes, ascending) => {
+   return quotes.sort((quoteA, quoteB) => {
+      if (ascending) {
+         return quoteA.id > quoteB.id ? 1 : -1;
+      } else {
+         return quoteA.id < quoteB.id ? 1 : -1;
+      }
+   });
+};
 
 const QuoteList = (props) => {
+   const history = useHistory();
+   const location = useLocation();
+   const queryParams = new URLSearchParams(location.search);
+   const isSortingAscding = queryParams.get('sort') === 'asc';
+   const soretedQuotes = sortQuotes(props.quotes, isSortingAscding);
+   function changeSortHandler() {
+      history.push('/quotes?sort=' + (isSortingAscding ? 'desc' : 'asc'));
+   }
    return (
       <Wrapper>
          <div>
+            <div className="sorting">
+               <button onClick={changeSortHandler}>
+                  Sort {isSortingAscding ? 'Descending' : 'Ascending'}
+               </button>
+            </div>
             <ul className="list">
-               {props.quotes.map((quote) => (
+               {soretedQuotes.map((quote) => (
                   <QuoteItem
                      key={quote.id}
                      id={quote.id}
